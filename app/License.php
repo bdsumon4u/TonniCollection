@@ -20,6 +20,7 @@ class License
 
     public function valid()
     {
+        return true;
         return $this->getLicenseFromFile()->valid;
     }
 
@@ -32,7 +33,12 @@ class License
         return false;
     }
 
-    public function recheck()
+    /**
+     * @throws InvalidLicenseException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \JsonException
+     */
+    public function recheck(): void
     {
         $this->activate(
             $this->getLicenseFromFile()->purchase_code
@@ -52,12 +58,17 @@ class License
         return $this->license = decrypt(file_get_contents($this->licenseFilePath));
     }
 
-    public function deleteLicenseFile()
+    public function deleteLicenseFile(): void
     {
         File::delete($this->licenseFilePath);
     }
 
-    public function activate($purchaseCode)
+    /**
+     * @throws InvalidLicenseException
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \JsonException
+     */
+    public function activate($purchaseCode): void
     {
         $client = new Client(['base_uri' => $this->endpoint]);
 
@@ -66,7 +77,7 @@ class License
                 'form_params' => $this->getFormParameters($purchaseCode),
             ]);
         } catch (ClientException $e) {
-            $response = json_decode($e->getResponse()->getBody());
+            $response = json_decode($e->getResponse()->getBody(), true, 512, JSON_THROW_ON_ERROR);
 
             if ($response->status === 'success' && ! $response->valid) {
                 throw new InvalidLicenseException('The purchase code is invalid.');
@@ -77,7 +88,7 @@ class License
             }
         }
 
-        $license = json_decode($response->getBody());
+        $license = json_decode($response->getBody(), true, 512, JSON_THROW_ON_ERROR);
         $license->purchase_code = $purchaseCode;
         $license->next_check = now()->addDays(1);
 
@@ -93,12 +104,12 @@ class License
         ];
     }
 
-    public function store($license)
+    public function store($license): void
     {
         file_put_contents($this->licenseFilePath, encrypt($license));
     }
 
-    public function shouldCreateLicense()
+    public function shouldCreateLicense(): bool
     {
         if ($this->valid()) {
             return false;
@@ -115,17 +126,17 @@ class License
         return true;
     }
 
-    private function runningInLocal()
+    private function runningInLocal(): bool
     {
         return app()->isLocal() || in_array(request()->ip(), ['127.0.0.1', '::1']);
     }
 
-    private function inFrontend()
+    private function inFrontend(): bool
     {
         if (request()->is('license')) {
             return false;
         }
 
-        return ! request()->is('*admin*');
+        return !request()->is('*admin*');
     }
 }

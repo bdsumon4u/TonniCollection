@@ -8,14 +8,14 @@ use Jackiedo\DotenvEditor\Facades\DotenvEditor;
 
 class Database
 {
-    public function setup($data)
+    public function setup($data): void
     {
         $this->checkDatabaseConnection($data);
         $this->setEnvVariables($data);
         $this->migrateDatabase();
     }
 
-    private function checkDatabaseConnection($data)
+    private function checkDatabaseConnection($data): void
     {
         $this->setupDatabaseConnectionConfig($data);
 
@@ -23,7 +23,7 @@ class Database
         DB::connection('mysql')->getPdo();
     }
 
-    private function setupDatabaseConnectionConfig($data)
+    private function setupDatabaseConnectionConfig($data): void
     {
         config([
             'database.default' => 'mysql',
@@ -35,7 +35,7 @@ class Database
         ]);
     }
 
-    private function setEnvVariables($data)
+    private function setEnvVariables($data): void
     {
         $env = DotenvEditor::load();
 
@@ -48,7 +48,7 @@ class Database
         $env->save();
     }
 
-    private function migrateDatabase()
+    private function migrateDatabase(): void
     {
         Artisan::call('migrate', ['--force' => true]);
     }

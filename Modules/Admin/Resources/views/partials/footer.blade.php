@@ -20,12 +20,12 @@
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <span>v{{ fleetcart_version() }}</span>
+        <span><a href="https://cyber32.com" class="text-danger" target="_blank">Cyber 32</a></span>
     </div>
 
     <a href="#" data-toggle="modal" data-target="#keyboard-shortcuts-modal">
         <i class="fa fa-keyboard-o"></i>
     </a>&nbsp;
 
-    <span>Copyright &copy; {{ date('Y')}} <a href="https://envaysoft.com/fleetcart" target="_blank">FleetCart</a></span>
+    <span>Copyright &copy; {{ date('Y')}} <a href="{{ config('app.url') }}" target="_blank">{{ setting('store_name') }}</a></span>
 </footer>

@@ -8,7 +8,7 @@ use Cartalyst\Sentinel\Laravel\Facades\Activation;
 
 class AdminAccount
 {
-    public function setup($data)
+    public function setup($data): void
     {
         $role = Role::create(['name' => 'Admin', 'permissions' => $this->getAdminRolePermissions()]);
 
@@ -26,7 +26,7 @@ class AdminAccount
         $admin->roles()->attach($role);
     }
 
-    private function getAdminRolePermissions()
+    private function getAdminRolePermissions(): array
     {
         return [
             // users

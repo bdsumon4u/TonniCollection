@@ -4,7 +4,7 @@ namespace FleetCart\Install;
 
 class Requirement
 {
-    public function extensions()
+    public function extensions(): array
     {
         return [
             'PHP >= 7.3.0' => version_compare(phpversion(), '7.3.0'),
@@ -19,7 +19,7 @@ class Requirement
         ];
     }
 
-    public function directories()
+    public function directories(): array
     {
         return [
             '.env' => is_writable(base_path('.env')),
@@ -28,7 +28,7 @@ class Requirement
         ];
     }
 
-    public function satisfied()
+    public function satisfied(): bool
     {
         return collect($this->extensions())
             ->merge($this->directories())

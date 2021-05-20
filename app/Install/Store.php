@@ -6,7 +6,7 @@ use Modules\Setting\Entities\Setting;
 
 class Store
 {
-    public function setup($data)
+    public function setup($data): void
     {
         Setting::setMany([
             'translatable' => [

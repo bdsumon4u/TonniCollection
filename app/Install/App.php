@@ -10,7 +10,7 @@ use Jackiedo\DotenvEditor\Facades\DotenvEditor;
 
 class App
 {
-    public function setup()
+    public function setup(): void
     {
         $this->generateAppKey();
         $this->setEnvVariables();
@@ -20,12 +20,12 @@ class App
         $this->createStorageFolder();
     }
 
-    private function generateAppKey()
+    private function generateAppKey(): void
     {
         Artisan::call('key:generate', ['--force' => true]);
     }
 
-    private function setEnvVariables()
+    private function setEnvVariables(): void
     {
         $env = DotenvEditor::load();
 
@@ -37,7 +37,7 @@ class App
         $env->save();
     }
 
-    private function createCustomerRole()
+    private function createCustomerRole(): void
     {
         Role::create(['name' => 'Customer']);
     }
@@ -89,15 +89,15 @@ class App
         ]);
     }
 
-    private function createDefaultCurrencyRate()
+    private function createDefaultCurrencyRate(): void
     {
         CurrencyRate::create(['currency' => 'USD', 'rate' => 1]);
     }
 
-    private function createStorageFolder()
+    private function createStorageFolder(): void
     {
-        if (! is_dir(public_path('storage'))) {
-            mkdir(public_path('storage'));
+        if (!is_dir(public_path('storage')) && !mkdir($concurrentDirectory = public_path('storage')) && !is_dir($concurrentDirectory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
         }
     }
 }
