@@ -14,5 +14,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           host: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
-          fingerpring: ${{ secrets.SSH_PUBKEY }}
+          fingerprint: ${{ secrets.SSH_PUBKEY }}
           script: 'cd /var/www/html && ./server_deploy.sh'
