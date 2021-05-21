@@ -1,0 +1,18 @@
+name: CD
+
+on:
+  push:
+    branches: [ production ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to production
+        uses: appleboy/ssh-action@master
+        with:
+          username: ${{ SSH_USERNAME }}
+          host: ${{ SSH_HOST }}
+          port: ${{ SSH_PORT }}
+          fingerpring: ${{ secrets.SSH_PUBKEY }}
+          script: 'cd /var/www/html && ./server_deploy.sh'
