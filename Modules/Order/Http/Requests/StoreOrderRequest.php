@@ -2,6 +2,7 @@
 
 namespace Modules\Order\Http\Requests;
 
+use Illuminate\Support\Str;
 use Modules\Support\Country;
 use Illuminate\Validation\Rule;
 use Modules\Payment\Facades\Gateway;
@@ -16,6 +17,21 @@ class StoreOrderRequest extends Request
      */
     protected $availableAttributes = 'checkout::attributes';
 
+    protected function prepareForValidation()
+    {
+        if (!$this->create_an_account) {
+            $this->merge([
+                'customer_email' => 'unknown@unknown.com',
+            ]);
+        }
+
+        $this->merge([
+            'billing' => [
+                'last_name' => ' ',
+            ] + $this->billing,
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -27,11 +43,11 @@ class StoreOrderRequest extends Request
             'customer_email' => ['required', 'email', $this->emailUniqueRule()],
             'customer_phone' => ['required'],
             'billing.first_name' => 'required',
-            'billing.last_name' => 'required',
+//            'billing.last_name' => 'required',
             'billing.address_1' => 'required',
-            'billing.city' => 'required',
-            'billing.zip' => 'required',
-            'billing.country' => ['required', Rule::in(Country::supportedCodes())],
+//            'billing.city' => 'required',
+//            'billing.zip' => 'required',
+//            'billing.country' => ['required', Rule::in(Country::supportedCodes())],
             'billing.state' => 'required',
             'create_an_account' => 'boolean',
             'password' => 'required_if:create_an_account,1',

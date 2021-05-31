@@ -5,28 +5,6 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="form-group">
-                    <label for="email">
-                        {{ trans('checkout::attributes.customer_email') }}<span>*</span>
-                    </label>
-
-                    <input
-                        type="text"
-                        name="customer_email"
-                        v-model="form.customer_email"
-                        id="email"
-                        class="form-control"
-                    >
-
-                    <span
-                        class="error-message"
-                        v-if="errors.has('customer_email')"
-                        v-text="errors.get('customer_email')"
-                    ></span>
-                </div>
-            </div>
-
-            <div class="col-md-9">
-                <div class="form-group">
                     <label for="phone">
                         {{ trans('checkout::attributes.customer_phone') }}<span>*</span>
                     </label>
@@ -69,6 +47,28 @@
                     </span>
 
                     <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="email">
+                                    {{ trans('checkout::attributes.customer_email') }}<span>*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    name="customer_email"
+                                    v-model="form.customer_email"
+                                    id="email"
+                                    class="form-control"
+                                >
+
+                                <span
+                                    class="error-message"
+                                    v-if="errors.has('customer_email')"
+                                    v-text="errors.get('customer_email')"
+                                ></span>
+                            </div>
+                        </div>
+
                         <div class="col-md-9">
                             <div class="form-group">
                                 <label for="password">
