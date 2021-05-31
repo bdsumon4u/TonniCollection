@@ -11,24 +11,28 @@
                 'title' => trans('storefront::storefront.form.background'),
                 'inputName' => 'storefront_three_column_full_width_banners_background_file_id',
                 'file' => $banners['background']->image,
+                'size' => '1200x250',
             ])
 
             @include('admin.storefront.tabs.partials.single_banner', [
                 'label' => trans('storefront::storefront.form.banner_1'),
                 'name' => 'storefront_three_column_full_width_banners_1',
                 'banner' => $banners['banner_1'],
+                'size' => '370x240',
             ])
 
             @include('admin.storefront.tabs.partials.single_banner', [
                 'label' => trans('storefront::storefront.form.banner_2'),
                 'name' => 'storefront_three_column_full_width_banners_2',
                 'banner' => $banners['banner_2'],
+                'size' => '970x240',
             ])
 
             @include('admin.storefront.tabs.partials.single_banner', [
                 'label' => trans('storefront::storefront.form.banner_3'),
                 'name' => 'storefront_three_column_full_width_banners_3',
                 'banner' => $banners['banner_3'],
+                'size' => '370x240',
             ])
         </div>
     </div>

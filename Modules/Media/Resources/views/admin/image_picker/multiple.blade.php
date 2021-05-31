@@ -1,5 +1,5 @@
 <div class="multiple-images-wrapper">
-    <h4>{{ $title }}</h4>
+    <h4>{{ $title }} @if(isset($size))<small>{{ $size }}</small>@endif</h4>
 
     <button type="button" class="image-picker btn btn-default" data-input-name="{{ $inputName }}" data-multiple>
         <i class="fa fa-folder-open m-r-5"></i>{{ trans('media::media.browse') }}

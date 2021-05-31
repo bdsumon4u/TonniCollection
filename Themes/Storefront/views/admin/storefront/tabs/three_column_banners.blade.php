@@ -11,18 +11,21 @@
                 'label' => trans('storefront::storefront.form.banner_1'),
                 'name' => 'storefront_three_column_banners_1',
                 'banner' => $banners['banner_1'],
+                'size' => '570x230',
             ])
 
             @include('admin.storefront.tabs.partials.single_banner', [
                 'label' => trans('storefront::storefront.form.banner_2'),
                 'name' => 'storefront_three_column_banners_2',
                 'banner' => $banners['banner_2'],
+                'size' => '570x230',
             ])
 
             @include('admin.storefront.tabs.partials.single_banner', [
                 'label' => trans('storefront::storefront.form.banner_3'),
                 'name' => 'storefront_three_column_banners_3',
                 'banner' => $banners['banner_3'],
+                'size' => '570x230',
             ])
         </div>
     </div>

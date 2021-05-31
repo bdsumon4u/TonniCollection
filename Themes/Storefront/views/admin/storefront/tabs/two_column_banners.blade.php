@@ -11,12 +11,14 @@
                 'label' => trans('storefront::storefront.form.banner_1'),
                 'name' => 'storefront_two_column_banners_1',
                 'banner' => $banners['banner_1'],
+                'size' => '870x270',
             ])
 
             @include('admin.storefront.tabs.partials.single_banner', [
                 'label' => trans('storefront::storefront.form.banner_2'),
                 'name' => 'storefront_two_column_banners_2',
                 'banner' => $banners['banner_2'],
+                'size' => '870x270',
             ])
         </div>
     </div>

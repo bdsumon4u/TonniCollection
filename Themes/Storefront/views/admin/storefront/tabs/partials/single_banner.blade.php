@@ -1,6 +1,6 @@
 <div class="panel">
     <div class="panel-header">
-        <h5>{{ $label }}</h5>
+        <h5>{{ $label }} @if(isset($size))<small>{{ $size }}</small>@endif</h5>
     </div>
 
     <div class="panel-body">

@@ -11,6 +11,7 @@
                 'label' => trans('storefront::storefront.form.banner'),
                 'name' => 'storefront_one_column_banner',
                 'banner' => $banner,
+                'size' => '1200x270',
             ])
         </div>
     </div>
