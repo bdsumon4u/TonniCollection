@@ -11,6 +11,7 @@
     "require": {
         "php": ">=7.3.0",
         "ext-json": "*",
+        "barryvdh/laravel-debugbar": "^3.5",
         "cache/filesystem-adapter": "^1.0",
         "cache/predis-adapter": "^1.0",
         "doctrine/dbal": "^2.10",
@@ -27,7 +28,6 @@
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.0",
         "beyondcode/laravel-dump-server": "^1.0",
         "beyondcode/laravel-query-detector": "^1.0",
         "facade/ignition": "^2.3.6",
