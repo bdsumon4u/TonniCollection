@@ -1,4 +1,4 @@
-<header class="header-wrap">
+<header class="header-wrap" style="background-color: aliceblue;">
     <div class="header-wrap-inner">
         <div class="container">
             <div class="row flex-nowrap justify-content-between position-relative">
