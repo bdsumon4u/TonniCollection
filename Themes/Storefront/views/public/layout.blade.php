@@ -77,6 +77,7 @@
         @stack('globals')
 
         @routes
+        @include('facebook-pixel::head')
     </head>
 
     <body
@@ -87,6 +88,7 @@
             --color-primary-transparent: {{ color2rgba($themeColor, 0.8) }};
             --color-primary-transparent-lite: {{ color2rgba($themeColor, 0.3) }};"
     >
+        @include('facebook-pixel::body')
         <div class="wrapper" id="app">
             @include('public.layout.top_nav')
             @include('public.layout.header')

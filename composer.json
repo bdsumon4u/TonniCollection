@@ -25,6 +25,7 @@
         "nwidart/laravel-modules": "^8.0",
         "swayok/alternative-laravel-cache": "^5.4",
         "symfony/intl": "^5.0",
+        "weblagence/laravel-facebook-pixel": "^1.1",
         "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
