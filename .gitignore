@@ -11,6 +11,7 @@ node_modules/
 /Modules/*/Assets/
 /Themes/*/assets/
 /tags
+lerna-debug.log
 mix-manifest.json
 npm-debug.log
 yarn-error.log
