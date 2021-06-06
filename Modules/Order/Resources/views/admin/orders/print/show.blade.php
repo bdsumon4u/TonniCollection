@@ -55,44 +55,30 @@
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tbody>
-                                                <tr>
-                                                    <td>{{ trans('order::print.email') }}:</td>
-                                                    <td>{{ $order->customer_email }}</td>
-                                                </tr>
+                                            <tr>
+                                                <td>{{ trans('order::print.email') }}:</td>
+                                                <td>{{ $order->customer_email }}</td>
+                                            </tr>
 
-                                                <tr>
-                                                    <td>{{ trans('order::print.phone') }}:</td>
-                                                    <td>{{ $order->customer_phone }}</td>
-                                                </tr>
+                                            <tr>
+                                                <td>{{ trans('order::print.phone') }}:</td>
+                                                <td>{{ $order->customer_phone }}</td>
+                                            </tr>
 
-                                                @if ($order->shipping_method)
-                                                    <tr>
-                                                        <td>{{ trans('order::print.shipping_method') }}:</td>
-                                                        <td>{{ $order->shipping_method }}</td>
-                                                    </tr>
-                                                @endif
-
+                                            @if ($order->shipping_method)
                                                 <tr>
-                                                    <td>{{ trans('order::print.payment_method') }}:</td>
-                                                    <td>{{ $order->payment_method }}</td>
+                                                    <td>{{ trans('order::print.shipping_method') }}:</td>
+                                                    <td>{{ $order->shipping_method }}</td>
                                                 </tr>
+                                            @endif
+
+                                            <tr>
+                                                <td>{{ trans('order::print.payment_method') }}:</td>
+                                                <td>{{ $order->payment_method }}</td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="invoice-address">
-                                    <h5>{{ trans('order::print.shipping_address') }}</h5>
-
-                                    <span>{{ $order->shipping_full_name }}</span>
-                                    <span>{{ $order->shipping_address_1 }}</span>
-                                    <span>{{ $order->shipping_address_2 }}</span>
-                                    <span>{{ $order->shipping_city }}, {{ $order->shipping_state_name }} {{ $order->shipping_zip }}</span>
-                                    <span>{{ $order->shipping_country_name }}</span>
                                 </div>
                             </div>
 

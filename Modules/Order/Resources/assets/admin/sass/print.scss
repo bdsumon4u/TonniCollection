@@ -431,7 +431,7 @@ table {
         td {
             border-top: 1px solid #f1f1f1;
             color: #444444;
-            padding: 16px 0 18px;
+            padding: 6px 0 8px;
             vertical-align: middle;
 
             &:nth-child(4) span {
@@ -619,7 +619,7 @@ table {
 
 @media print {
     .invoice-wrapper .invoice-header {
-        margin-top: 30px;
+        margin-top: 14px;
     }
 
     .invoice-header {
@@ -684,7 +684,7 @@ table {
     }
 
     .invoice-body .cart-list {
-        margin: 30px 0 0;
+        margin: 14px 0 0;
     }
 
     .cart-list .table-responsive tbody td label {
