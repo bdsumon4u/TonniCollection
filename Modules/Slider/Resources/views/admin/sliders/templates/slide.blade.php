@@ -7,7 +7,7 @@
             </span>
 
             <span class="pull-left">
-                {{ trans('slider::sliders.slide.image_slide') }}
+                {{ trans('slider::sliders.slide.image_slide') }} <small>970x610</small>
             </span>
 
             <button type="button" class="delete-slide btn pull-right">
