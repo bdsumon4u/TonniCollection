@@ -15,6 +15,7 @@ use Modules\Cart\Http\Middleware\CheckCartStock;
 use Modules\Order\Http\Requests\StoreOrderRequest;
 use Modules\Cart\Http\Middleware\CheckCouponUsageLimit;
 use Modules\Cart\Http\Middleware\RedirectIfCartIsEmpty;
+use WebLAgence\LaravelFacebookPixel\LaravelFacebookPixelFacade;
 
 class CheckoutController extends Controller
 {
@@ -39,6 +40,7 @@ class CheckoutController extends Controller
      */
     public function create()
     {
+        LaravelFacebookPixelFacade::createEvent('AddToCart');
         return view('public.checkout.create', [
             'cart' => Cart::instance(),
             'countries' => Country::supported(),

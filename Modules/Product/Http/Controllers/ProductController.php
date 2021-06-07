@@ -8,6 +8,7 @@ use Modules\Product\Entities\Product;
 use Modules\Product\Events\ProductViewed;
 use Modules\Product\Filters\ProductFilter;
 use Modules\Product\Http\Middleware\SetProductSortOption;
+use WebLAgence\LaravelFacebookPixel\LaravelFacebookPixelFacade;
 
 class ProductController extends Controller
 {
@@ -53,6 +54,9 @@ class ProductController extends Controller
         $review = $this->getReviewData($product);
 
         event(new ProductViewed($product));
+        LaravelFacebookPixelFacade::createEvent('ViewContent', [
+            'product_name' => $product->name,
+        ]);
 
         return view('public.products.show', compact('product', 'relatedProducts', 'upSellProducts', 'review'));
     }

@@ -7,6 +7,7 @@ use Modules\Order\Entities\Order;
 use Modules\Payment\Facades\Gateway;
 use Modules\Checkout\Events\OrderPlaced;
 use Modules\Checkout\Services\OrderService;
+use WebLAgence\LaravelFacebookPixel\LaravelFacebookPixelFacade;
 
 class CheckoutCompleteController
 {
@@ -36,6 +37,11 @@ class CheckoutCompleteController
         $order->storeTransaction($response);
 
         event(new OrderPlaced($order));
+
+        LaravelFacebookPixelFacade::createEvent('Purchase', [
+            'value' => $order->total,
+            'currency' => 'USD',
+        ]);
 
         if (! request()->ajax()) {
             return redirect()->route('checkout.complete.show');
